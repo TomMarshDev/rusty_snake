@@ -4,12 +4,12 @@ extern crate opengl_graphics;
 extern crate piston;
 
 use glutin_window::GlutinWindow as Window;
-use opengl_graphics::{GlGraphics, OpenGL};
+use opengl_graphics::OpenGL;
 use piston::event_loop::{EventSettings, Events};
-use piston::input::{Button, PressEvent, RenderEvent, UpdateEvent};
+use piston::input::{Button, PressEvent, RenderEvent};
 use piston::window::WindowSettings;
 
-use snake::{SnakeGame};
+use snake::SnakeGame;
 
 fn main() {
     // Change this to OpenGL::V2_1 if not working.
@@ -31,10 +31,6 @@ fn main() {
     while let Some(e) = events.next(&mut window) {
         if let Some(args) = e.render_args() {
             snake_game.render(&args);
-        }
-
-        if let Some(args) = e.update_args() {
-            snake_game.update(&args);
         }
 
         if let Some(Button::Keyboard(key)) = e.press_args() {
